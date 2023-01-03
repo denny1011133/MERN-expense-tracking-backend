@@ -10,7 +10,14 @@ const userRoutes = require('./routes/user');
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 app.use(express.json()); //parse incoming requests with JSON payloads
 
 // routes
